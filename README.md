@@ -1,5 +1,7 @@
 # game-of-life
 
+Draw grid and allow to toggle cells on click.
+
 ## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
