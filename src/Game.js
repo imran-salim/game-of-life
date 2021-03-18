@@ -2,7 +2,6 @@ import React from 'react';
 import './Game.css';
 
 const CELL_SIZE = 20;
-// Board width and height
 const WIDTH = 800;
 const HEIGHT = 600;
 
@@ -41,7 +40,6 @@ class Game extends React.Component {
         return cells;
     }
 
-    // Get the offset of a cell in the DOM
     getElementOffset() {
         const rect = this.boardRef.getBoundingClientRect();
         const doc = document.documentElement;
@@ -52,7 +50,6 @@ class Game extends React.Component {
         };
     }
 
-    // Toggle a cell on click
     handleClick = (event) => {
         const elemOffset = this.getElementOffset();
         const offsetX = event.clientX - elemOffset.x;
@@ -74,9 +71,7 @@ class Game extends React.Component {
                 <div className="Board"
                      style={{ width: WIDTH, height: HEIGHT, backgroundSize: `${CELL_SIZE}px ${CELL_SIZE}px` }}
                      onClick={this.handleClick}
-                     // Update a cell in the DOM
                      ref={(n) => { this.boardRef = n; }}>
-                    {/* Fill board with cells */}
                     {cells.map(cell => (
                             <Cell x={cell.x} y={cell.y}
                                   key={`${cell.x},${cell.y}`} />
