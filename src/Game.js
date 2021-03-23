@@ -7,15 +7,17 @@ const WIDTH = 800;
 const HEIGHT = 600;
 
 class Game extends React.Component {
+    state = {
+        cells: [],
+        interval: 100,
+        isRunning: false,
+    }
+
     constructor() {
         super();
         this.rows = HEIGHT / CELL_SIZE;
         this.cols = WIDTH / CELL_SIZE;
         this.board = this.makeEmptyBoard();
-    }
-
-    state = {
-        cells: [],
     }
 
     makeEmptyBoard() {
@@ -66,9 +68,40 @@ class Game extends React.Component {
 
         this.setState({ cells: this.makeCells() });
     }
+
+    runGame = () => {
+        this.setState({ isRunning: true });
+        this.runIteration();
+    }
+
+    stopGame = () => {
+        this.setState({ isRunning: false });
+        if (this.timeoutHandler) {
+            window.clearTimeout(this.timeoutHandler);
+            this.timeoutHandler = null;
+        }
+    }
+
+    runIteration() {
+        console.log("running iteration");
+        let newBoard = this.makeEmptyBoard();
+
+        // add logic for iterations
+
+        this.board = newBoard;
+        this.setState({ cells: this.makeCells() });
+
+        this.timeoutHandler = window.setTimeout(() => {
+            this.runIteration();
+        },  this.state.interval);
+    }
+
+    handleIntervalChange = (event) => {
+        this.setState({ interval: event.target.value });
+    }
         
     render() {
-        const { cells } = this.state;
+        const { cells, interval, isRunning } = this.state;
         return (
             <div>
                 <div className="Board"
@@ -82,6 +115,15 @@ class Game extends React.Component {
                                   key={`${cell.x},${cell.y}`} />
                         )
                     )}
+                </div>
+                <div className="controls">
+                    Update every
+                        <input value={this.state.interval}
+                               onChange={this.handleIntervalChange} /> msec
+                    {isRunning ?
+                        <button className="button" onClick={this.stopGame}>Stop</button> : 
+                        <button className="button" onClick={this.runGame}>Run</button>
+                    }
                 </div>
             </div>
         );
