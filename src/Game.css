@@ -9,3 +9,8 @@
     background: #ccc;
     position: absolute;
 }
+
+.controls {
+    text-align: center;
+    padding-top: 20px;
+}
