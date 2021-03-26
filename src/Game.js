@@ -184,7 +184,7 @@ class Game extends React.Component {
                 </div>
                 <div className="controls">
                     Update every&nbsp;
-                        <input value={this.state.interval}
+                        <input value={interval}
                                onChange={this.handleIntervalChange} />&nbsp;msec<br/><br/>
                     {isRunning ?
                         <button className="button" onClick={this.stopGame}>Stop</button> : 
