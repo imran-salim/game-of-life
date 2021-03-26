@@ -1,11 +1,11 @@
 import React from 'react';
+// import React, { useState } from 'react';
 import './Game.css';
 
-const CELL_SIZE = 15;
+const CELL_SIZE = 20;
 // Board width and height
-const WIDTH = 700;
-const HEIGHT = 500;
-
+const WIDTH = 800;
+const HEIGHT = 600;
 
 class Cell extends React.Component {
     render() {
@@ -20,6 +20,7 @@ class Cell extends React.Component {
     }
 }
 
+// class Game extends React.Component {
 class Game extends React.Component {
     constructor() {
         super();
