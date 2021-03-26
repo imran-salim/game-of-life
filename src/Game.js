@@ -1,10 +1,10 @@
 import React from 'react';
 import './Game.css';
 
-const CELL_SIZE = 20;
+const CELL_SIZE = 15;
 // Board width and height
-const WIDTH = 800;
-const HEIGHT = 600;
+const WIDTH = 700;
+const HEIGHT = 500;
 
 
 class Cell extends React.Component {
@@ -170,6 +170,7 @@ class Game extends React.Component {
         const { cells, interval, isRunning } = this.state;
         return (
             <div>
+                <h1 id="title">Conway's Game of Life</h1>
                 <div className="Board"
                      style={{ width: WIDTH, height: HEIGHT, backgroundSize: `${CELL_SIZE}px ${CELL_SIZE}px` }}
                      onClick={this.handleClick}
