@@ -171,7 +171,7 @@ class Game extends React.Component {
         const { cells, interval, isRunning } = this.state;
         return (
             <div>
-                <h1 id="title">Conway's Game of Life</h1>
+                {/* <h1 id="title">Conway's Game of Life</h1> */}
                 <div className="Board"
                      style={{ width: WIDTH, height: HEIGHT, backgroundSize: `${CELL_SIZE}px ${CELL_SIZE}px` }}
                      onClick={this.handleClick}
